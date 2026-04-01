@@ -3,19 +3,31 @@ package com.suhu.app
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.text.BasicText
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import com.suhu.app.ui.theme.SuhuTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            // Theme framework Vibe Apple
-            BasicText(
-                "Suhu Subscription Hunter",
-                modifier = Modifier.fillMaxSize()
-            )
+            SuhuTheme {
+                Box(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .background(SuhuTheme.colors.background),
+                    contentAlignment = Alignment.Center
+                ) {
+                    BasicText(
+                        text = "Suhu Subscription Hunter",
+                        style = SuhuTheme.typography.titleLarge.copy(color = SuhuTheme.colors.onBackground)
+                    )
+                }
+            }
         }
     }
 }
