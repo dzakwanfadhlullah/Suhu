@@ -23,10 +23,15 @@ class DefaultAppContainer(private val context: Context) : AppContainer {
             context,
             AppDatabase::class.java,
             "suhu_database"
-        ).build()
+        )
+        .fallbackToDestructiveMigration()
+        .build()
     }
 
     override val subscriptionRepository: SubscriptionRepository by lazy {
-        SubscriptionRepositoryImpl(database.subscriptionDao())
+        SubscriptionRepositoryImpl(
+            database.subscriptionDao(),
+            database.transactionDao()
+        )
     }
 }

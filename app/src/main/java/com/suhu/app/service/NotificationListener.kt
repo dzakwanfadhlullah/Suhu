@@ -45,7 +45,18 @@ class NotificationListener : NotificationListenerService() {
         // Jika berhasil mengekstrak nominal dan merchant yang sah, selanjutnya data ini
         // akan disimpan ke database sebagai langganan (langkah Fase 6.3 / Integrasi Database).
         if (parsedAmount != null && parsedMerchant != null) {
-            Log.d("SuhuNotification", ">> MATCH DITEMUKAN! Siap dikirim ke Database. <<")
+            Log.d("SuhuNotification", ">> ACTION: Menganalisis Recurrence transaksi... <<")
+            
+            // Mendapatkan Repositori dari AppContainer
+            val application = applicationContext as com.suhu.app.SuhuApplication
+            val repository = application.container.subscriptionRepository
+            
+            // Masukkan ke mesin detektor
+            RecurrenceDetector.analyzeAndProcessTransaction(
+                parsedAmount = parsedAmount,
+                parsedMerchant = parsedMerchant, 
+                repository = repository
+            )
         }
     }
 }
