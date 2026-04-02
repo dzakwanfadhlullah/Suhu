@@ -28,15 +28,24 @@ class NotificationListener : NotificationListenerService() {
         val text = extras.getCharSequence(Notification.EXTRA_TEXT)?.toString() ?: ""
         val bigText = extras.getCharSequence(Notification.EXTRA_BIG_TEXT)?.toString() ?: ""
 
-        val fullBody = if (bigText.isNotBlank()) bigText else text
+        // Menggabungkan teks untuk diparsing
+        val fullBody = if (bigText.isNotBlank()) "$title $bigText" else "$title $text"
+
+        // Ekstraksi Nominal dan nama Merchant via Regex Parser
+        val parsedAmount = RegexParser.parseAmount(fullBody)
+        val parsedMerchant = RegexParser.parseMerchant(fullBody)
 
         Log.d("SuhuNotification", "==============================")
-        Log.d("SuhuNotification", "🏦 Source : $packageName")
-        Log.d("SuhuNotification", "📌 Title  : $title")
-        Log.d("SuhuNotification", "💬 Body   : $fullBody")
+        Log.d("SuhuNotification", "🏦 Source   : $packageName")
+        Log.d("SuhuNotification", "📌 Raw Text : $fullBody")
+        Log.d("SuhuNotification", "💰 Nominal  : ${parsedAmount ?: "Tidak Ditemukan"}")
+        Log.d("SuhuNotification", "🏢 Merchant : ${parsedMerchant ?: "Tidak Ditemukan"}")
         Log.d("SuhuNotification", "==============================")
 
-        // TODO: Di fase 6.2, kita akan melempar fullBody ke RegexParser 
-        // lalu menyimpannya ke Database menggunakan WorkManager/Coroutine
+        // Jika berhasil mengekstrak nominal dan merchant yang sah, selanjutnya data ini
+        // akan disimpan ke database sebagai langganan (langkah Fase 6.3 / Integrasi Database).
+        if (parsedAmount != null && parsedMerchant != null) {
+            Log.d("SuhuNotification", ">> MATCH DITEMUKAN! Siap dikirim ke Database. <<")
+        }
     }
 }
