@@ -13,4 +13,10 @@ interface SubscriptionDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertSubscription(subscription: SubscriptionEntity)
+
+    @Query("SELECT * FROM subscriptions WHERE id = :id LIMIT 1")
+    suspend fun getSubscriptionById(id: Long): SubscriptionEntity?
+
+    @Query("DELETE FROM subscriptions WHERE id = :id")
+    suspend fun deleteSubscription(id: Long)
 }
