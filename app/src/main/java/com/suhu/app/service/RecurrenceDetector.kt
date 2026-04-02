@@ -28,41 +28,46 @@ object RecurrenceDetector {
         repository: SubscriptionRepository
     ) {
         CoroutineScope(Dispatchers.IO).launch {
-            val currentTime = System.currentTimeMillis()
-            val newTrans = TransactionEntity(
-                merchantName = parsedMerchant,
-                amount = parsedAmount,
-                timestamp = currentTime
-            )
+            try {
+                val currentTime = System.currentTimeMillis()
+                val newTrans = TransactionEntity(
+                    merchantName = parsedMerchant,
+                    amount = parsedAmount,
+                    timestamp = currentTime
+                )
 
-            // Simpan raw transaction terlebih dahulu
-            repository.insertTransaction(newTrans)
+                // Simpan raw transaction terlebih dahulu
+                repository.insertTransaction(newTrans)
 
-            // 1. Rule Pertama: Bypass Dictionary Force (Guaranteed Subscription)
-            if (GUARANTEED_SUBSCRIPTIONS.contains(parsedMerchant.uppercase())) {
-                promoteToSubscription(parsedMerchant, parsedAmount, currentTime, repository)
-                return@launch
-            }
+                // 1. Rule Pertama: Bypass Dictionary Force (Guaranteed Subscription)
+                if (GUARANTEED_SUBSCRIPTIONS.contains(parsedMerchant.uppercase())) {
+                    promoteToSubscription(parsedMerchant, parsedAmount, currentTime, repository)
+                    return@launch
+                }
 
-            // 2. Rule Kedua: Historical Match Analysis
-            // Cari transaksi dengan nama merchant dan nominal persis di 20 - 40 hari yang lalu
-            val startWindow = currentTime - (40 * DAY_IN_MILLIS)
-            val endWindow = currentTime - (20 * DAY_IN_MILLIS)
+                // 2. Rule Kedua: Historical Match Analysis
+                // Cari transaksi dengan nama merchant dan nominal persis di 20 - 40 hari yang lalu
+                val startWindow = currentTime - (40 * DAY_IN_MILLIS)
+                val endWindow = currentTime - (20 * DAY_IN_MILLIS)
 
-            val previousMatch = repository.findMatchingTransactionInWindow(
-                merchantName = parsedMerchant,
-                amount = parsedAmount,
-                startTime = startWindow,
-                endTime = endWindow
-            )
+                val previousMatch = repository.findMatchingTransactionInWindow(
+                    merchantName = parsedMerchant,
+                    amount = parsedAmount,
+                    startTime = startWindow,
+                    endTime = endWindow
+                )
 
-            if (previousMatch != null && !previousMatch.isProcessedAsSubscription) {
-                // Ada histori pembayaran dengan merchant & nominal yang sama persis sekitar sebulan lalu!
-                // INI ADALAH LANGGANAN! (Contoh: Uang Kas, Gym Lokal, dll)
-                promoteToSubscription(parsedMerchant, parsedAmount, currentTime, repository)
+                if (previousMatch != null && !previousMatch.isProcessedAsSubscription) {
+                    // Ada histori pembayaran dengan merchant & nominal yang sama persis sekitar sebulan lalu!
+                    // INI ADALAH LANGGANAN! (Contoh: Uang Kas, Gym Lokal, dll)
+                    promoteToSubscription(parsedMerchant, parsedAmount, currentTime, repository)
 
-                // Tandai transaksi lampau agar tidak ke-trigger dua kali
-                repository.markTransactionAsProcessed(previousMatch.id)
+                    // Tandai transaksi lampau agar tidak ke-trigger dua kali
+                    repository.markTransactionAsProcessed(previousMatch.id)
+                }
+            } catch (e: Exception) {
+                // FALLBACK: Mencegah service crash seandainya terjadi disk error atau DB error berskala kecil.
+                e.printStackTrace()
             }
         }
     }
