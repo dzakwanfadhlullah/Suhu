@@ -391,7 +391,7 @@ private fun MascotInsightBox() {
         modifier = Modifier
             .fillMaxWidth()
             .clip(SuhuTheme.shapes.large)
-            .background(colors.primaryFixed.copy(alpha = 0.3f))
+            .background(colors.primaryContainer.copy(alpha = 0.3f))
             .padding(spacing.large),
         horizontalArrangement = Arrangement.spacedBy(spacing.medium),
         verticalAlignment = Alignment.Top
@@ -419,7 +419,7 @@ private fun MascotInsightBox() {
         BasicText(
             text = "Tips Si Kancil: Pastikan tanggal mulai benar agar aku bisa mengingatkanmu tepat 3 hari sebelum saldo terpotong!",
             style = SuhuTheme.typography.bodySmall.copy(
-                color = colors.onPrimaryFixed,
+                color = colors.onPrimaryContainer,
                 lineHeight = 20.sp
             ),
             modifier = Modifier.weight(1f)

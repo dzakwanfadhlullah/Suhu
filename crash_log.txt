@@ -1,0 +1,705 @@
+﻿
+04-02 17:34:48.504  8251 
+ 8251 E AndroidRuntime: 
+FATAL EXCEPTION: main
+04-02 17:34:48.504  8251 
+ 8251 E AndroidRuntime: 
+Process: com.suhu.app, 
+PID: 8251
+04-02 17:34:48.504  8251 
+ 8251 E AndroidRuntime: j
+ava.lang.IllegalStateExce
+ption: Could not load 
+font
+04-02 17:34:48.504  8251 
+ 8251 E AndroidRuntime: 	
+at androidx.compose.ui.te
+xt.font.TypefaceRequestCa
+che.runCached(FontFamilyR
+esolver.kt:207)
+04-02 17:34:48.504  8251 
+ 8251 E AndroidRuntime: 	
+at androidx.compose.ui.te
+xt.font.FontFamilyResolve
+rImpl.resolve(FontFamilyR
+esolver.kt:92)
+04-02 17:34:48.504  8251 
+ 8251 E AndroidRuntime: 	
+at androidx.compose.ui.te
+xt.font.FontFamilyResolve
+rImpl.resolve-DPcqOEQ(Fon
+tFamilyResolver.kt:79)
+04-02 17:34:48.504  8251 
+ 8251 E AndroidRuntime: 	
+at androidx.compose.ui.te
+xt.platform.AndroidParagr
+aphIntrinsics$resolveType
+face$1.invoke-DPcqOEQ(And
+roidParagraphIntrinsics.a
+ndroid.kt:92)
+04-02 17:34:48.504  8251 
+ 8251 E AndroidRuntime: 	
+at androidx.compose.ui.te
+xt.platform.AndroidParagr
+aphIntrinsics$resolveType
+face$1.invoke(AndroidPara
+graphIntrinsics.android.k
+t:90)
+04-02 17:34:48.504  8251 
+ 8251 E AndroidRuntime: 	
+at androidx.compose.ui.te
+xt.platform.extensions.Te
+xtPaintExtensions_android
+Kt.applySpanStyle(TextPai
+ntExtensions.android.kt:6
+3)
+04-02 17:34:48.504  8251 
+ 8251 E AndroidRuntime: 	
+at androidx.compose.ui.te
+xt.platform.AndroidParagr
+aphIntrinsics.<init>(Andr
+oidParagraphIntrinsics.an
+droid.kt:109)
+04-02 17:34:48.504  8251 
+ 8251 E AndroidRuntime: 	
+at androidx.compose.ui.te
+xt.platform.AndroidParagr
+aphIntrinsics_androidKt.A
+ctualParagraphIntrinsics(
+AndroidParagraphIntrinsic
+s.android.kt:184)
+04-02 17:34:48.504  8251 
+ 8251 E AndroidRuntime: 	
+at androidx.compose.ui.te
+xt.ParagraphIntrinsicsKt.
+ParagraphIntrinsics(Parag
+raphIntrinsics.kt:98)
+04-02 17:34:48.504  8251 
+ 8251 E AndroidRuntime: 	
+at androidx.compose.ui.te
+xt.ParagraphIntrinsicsKt.
+ParagraphIntrinsics$defau
+lt(ParagraphIntrinsics.kt
+:91)
+04-02 17:34:48.504  8251 
+ 8251 E AndroidRuntime: 	
+at androidx.compose.found
+ation.text.modifiers.Para
+graphLayoutCache.setLayou
+tDirection(ParagraphLayou
+tCache.kt:250)
+04-02 17:34:48.504  8251 
+ 8251 E AndroidRuntime: 	
+at androidx.compose.found
+ation.text.modifiers.Para
+graphLayoutCache.layoutTe
+xt-K40F9xA(ParagraphLayou
+tCache.kt:273)
+04-02 17:34:48.504  8251 
+ 8251 E AndroidRuntime: 	
+at androidx.compose.found
+ation.text.modifiers.Para
+graphLayoutCache.layoutWi
+thConstraints-K40F9xA(Par
+agraphLayoutCache.kt:183)
+04-02 17:34:48.504  8251 
+ 8251 E AndroidRuntime: 	
+at androidx.compose.found
+ation.text.modifiers.Text
+StringSimpleNode.measure-
+3p2s80s(TextStringSimpleN
+ode.kt:326)
+04-02 17:34:48.504  8251 
+ 8251 E AndroidRuntime: 	
+at androidx.compose.ui.no
+de.LayoutModifierNodeCoor
+dinator.measure-BRTryo0(L
+ayoutModifierNodeCoordina
+tor.kt:116)
+04-02 17:34:48.504  8251 
+ 8251 E AndroidRuntime: 	
+at androidx.compose.ui.gr
+aphics.SimpleGraphicsLaye
+rModifier.measure-3p2s80s
+(GraphicsLayerModifier.kt
+:646)
+04-02 17:34:48.504  8251 
+ 8251 E AndroidRuntime: 	
+at androidx.compose.ui.no
+de.LayoutModifierNodeCoor
+dinator.measure-BRTryo0(L
+ayoutModifierNodeCoordina
+tor.kt:116)
+04-02 17:34:48.504  8251 
+ 8251 E AndroidRuntime: 	
+at androidx.compose.ui.no
+de.LayoutNodeLayoutDelega
+te$performMeasureBlock$1.
+invoke(LayoutNodeLayoutDe
+legate.kt:252)
+04-02 17:34:48.504  8251 
+ 8251 E AndroidRuntime: 	
+at androidx.compose.ui.no
+de.LayoutNodeLayoutDelega
+te$performMeasureBlock$1.
+invoke(LayoutNodeLayoutDe
+legate.kt:251)
+04-02 17:34:48.504  8251 
+ 8251 E AndroidRuntime: 	
+at androidx.compose.runti
+me.snapshots.Snapshot$Com
+panion.observe(Snapshot.k
+t:2303)
+04-02 17:34:48.504  8251 
+ 8251 E AndroidRuntime: 	
+at androidx.compose.runti
+me.snapshots.SnapshotStat
+eObserver$ObservedScopeMa
+p.observe(SnapshotStateOb
+server.kt:500)
+04-02 17:34:48.504  8251 
+ 8251 E AndroidRuntime: 	
+at androidx.compose.runti
+me.snapshots.SnapshotStat
+eObserver.observeReads(Sn
+apshotStateObserver.kt:25
+6)
+04-02 17:34:48.504  8251 
+ 8251 E AndroidRuntime: 	
+at androidx.compose.ui.no
+de.OwnerSnapshotObserver.
+observeReads$ui_release(O
+wnerSnapshotObserver.kt:1
+33)
+04-02 17:34:48.504  8251 
+ 8251 E AndroidRuntime: 	
+at androidx.compose.ui.no
+de.OwnerSnapshotObserver.
+observeMeasureSnapshotRea
+ds$ui_release(OwnerSnapsh
+otObserver.kt:113)
+04-02 17:34:48.504  8251 
+ 8251 E AndroidRuntime: 	
+at androidx.compose.ui.no
+de.LayoutNodeLayoutDelega
+te.performMeasure-BRTryo0
+(LayoutNodeLayoutDelegate
+.kt:1617)
+04-02 17:34:48.504  8251 
+ 8251 E AndroidRuntime: 	
+at androidx.compose.ui.no
+de.LayoutNodeLayoutDelega
+te.access$performMeasure-
+BRTryo0(LayoutNodeLayoutD
+elegate.kt:36)
+04-02 17:34:48.504  8251 
+ 8251 E AndroidRuntime: 	
+at androidx.compose.ui.no
+de.LayoutNodeLayoutDelega
+te$MeasurePassDelegate.re
+measure-BRTryo0(LayoutNod
+eLayoutDelegate.kt:620)
+04-02 17:34:48.504  8251 
+ 8251 E AndroidRuntime: 	
+at androidx.compose.ui.no
+de.LayoutNodeLayoutDelega
+te$MeasurePassDelegate.me
+asure-BRTryo0(LayoutNodeL
+ayoutDelegate.kt:596)
+04-02 17:34:48.504  8251 
+ 8251 E AndroidRuntime: 	
+at androidx.compose.found
+ation.layout.BoxMeasurePo
+licy.measure-3p2s80s(Box.
+kt:122)
+04-02 17:34:48.504  8251 
+ 8251 E AndroidRuntime: 	
+at androidx.compose.ui.no
+de.InnerNodeCoordinator.m
+easure-BRTryo0(InnerNodeC
+oordinator.kt:126)
+04-02 17:34:48.504  8251 
+ 8251 E AndroidRuntime: 	
+at androidx.compose.found
+ation.layout.FillNode.mea
+sure-3p2s80s(Size.kt:699)
+04-02 17:34:48.504  8251 
+ 8251 E AndroidRuntime: 	
+at androidx.compose.ui.no
+de.LayoutModifierNodeCoor
+dinator.measure-BRTryo0(L
+ayoutModifierNodeCoordina
+tor.kt:116)
+04-02 17:34:48.504  8251 
+ 8251 E AndroidRuntime: 	
+at androidx.compose.ui.no
+de.LayoutNodeLayoutDelega
+te$performMeasureBlock$1.
+invoke(LayoutNodeLayoutDe
+legate.kt:252)
+04-02 17:34:48.504  8251 
+ 8251 E AndroidRuntime: 	
+at androidx.compose.ui.no
+de.LayoutNodeLayoutDelega
+te$performMeasureBlock$1.
+invoke(LayoutNodeLayoutDe
+legate.kt:251)
+04-02 17:34:48.504  8251 
+ 8251 E AndroidRuntime: 	
+at androidx.compose.runti
+me.snapshots.Snapshot$Com
+panion.observe(Snapshot.k
+t:2303)
+04-02 17:34:48.505  8251 
+ 8251 E AndroidRuntime: 	
+at androidx.compose.runti
+me.snapshots.SnapshotStat
+eObserver$ObservedScopeMa
+p.observe(SnapshotStateOb
+server.kt:500)
+04-02 17:34:48.505  8251 
+ 8251 E AndroidRuntime: 	
+at androidx.compose.runti
+me.snapshots.SnapshotStat
+eObserver.observeReads(Sn
+apshotStateObserver.kt:25
+6)
+04-02 17:34:48.505  8251 
+ 8251 E AndroidRuntime: 	
+at androidx.compose.ui.no
+de.OwnerSnapshotObserver.
+observeReads$ui_release(O
+wnerSnapshotObserver.kt:1
+33)
+04-02 17:34:48.505  8251 
+ 8251 E AndroidRuntime: 	
+at androidx.compose.ui.no
+de.OwnerSnapshotObserver.
+observeMeasureSnapshotRea
+ds$ui_release(OwnerSnapsh
+otObserver.kt:113)
+04-02 17:34:48.505  8251 
+ 8251 E AndroidRuntime: 	
+at androidx.compose.ui.no
+de.LayoutNodeLayoutDelega
+te.performMeasure-BRTryo0
+(LayoutNodeLayoutDelegate
+.kt:1617)
+04-02 17:34:48.505  8251 
+ 8251 E AndroidRuntime: 	
+at androidx.compose.ui.no
+de.LayoutNodeLayoutDelega
+te.access$performMeasure-
+BRTryo0(LayoutNodeLayoutD
+elegate.kt:36)
+04-02 17:34:48.505  8251 
+ 8251 E AndroidRuntime: 	
+at androidx.compose.ui.no
+de.LayoutNodeLayoutDelega
+te$MeasurePassDelegate.re
+measure-BRTryo0(LayoutNod
+eLayoutDelegate.kt:620)
+04-02 17:34:48.505  8251 
+ 8251 E AndroidRuntime: 	
+at androidx.compose.ui.no
+de.LayoutNodeLayoutDelega
+te$MeasurePassDelegate.me
+asure-BRTryo0(LayoutNodeL
+ayoutDelegate.kt:596)
+04-02 17:34:48.505  8251 
+ 8251 E AndroidRuntime: 	
+at androidx.compose.ui.la
+yout.RootMeasurePolicy.me
+asure-3p2s80s(RootMeasure
+Policy.kt:38)
+04-02 17:34:48.505  8251 
+ 8251 E AndroidRuntime: 	
+at androidx.compose.ui.no
+de.InnerNodeCoordinator.m
+easure-BRTryo0(InnerNodeC
+oordinator.kt:126)
+04-02 17:34:48.505  8251 
+ 8251 E AndroidRuntime: 	
+at androidx.compose.ui.no
+de.LayoutNodeLayoutDelega
+te$performMeasureBlock$1.
+invoke(LayoutNodeLayoutDe
+legate.kt:252)
+04-02 17:34:48.505  8251 
+ 8251 E AndroidRuntime: 	
+at androidx.compose.ui.no
+de.LayoutNodeLayoutDelega
+te$performMeasureBlock$1.
+invoke(LayoutNodeLayoutDe
+legate.kt:251)
+04-02 17:34:48.505  8251 
+ 8251 E AndroidRuntime: 	
+at androidx.compose.runti
+me.snapshots.Snapshot$Com
+panion.observe(Snapshot.k
+t:2303)
+04-02 17:34:48.505  8251 
+ 8251 E AndroidRuntime: 	
+at androidx.compose.runti
+me.snapshots.SnapshotStat
+eObserver$ObservedScopeMa
+p.observe(SnapshotStateOb
+server.kt:500)
+04-02 17:34:48.505  8251 
+ 8251 E AndroidRuntime: 	
+at androidx.compose.runti
+me.snapshots.SnapshotStat
+eObserver.observeReads(Sn
+apshotStateObserver.kt:25
+6)
+04-02 17:34:48.505  8251 
+ 8251 E AndroidRuntime: 	
+at androidx.compose.ui.no
+de.OwnerSnapshotObserver.
+observeReads$ui_release(O
+wnerSnapshotObserver.kt:1
+33)
+04-02 17:34:48.505  8251 
+ 8251 E AndroidRuntime: 	
+at androidx.compose.ui.no
+de.OwnerSnapshotObserver.
+observeMeasureSnapshotRea
+ds$ui_release(OwnerSnapsh
+otObserver.kt:113)
+04-02 17:34:48.505  8251 
+ 8251 E AndroidRuntime: 	
+at androidx.compose.ui.no
+de.LayoutNodeLayoutDelega
+te.performMeasure-BRTryo0
+(LayoutNodeLayoutDelegate
+.kt:1617)
+04-02 17:34:48.505  8251 
+ 8251 E AndroidRuntime: 	
+at androidx.compose.ui.no
+de.LayoutNodeLayoutDelega
+te.access$performMeasure-
+BRTryo0(LayoutNodeLayoutD
+elegate.kt:36)
+04-02 17:34:48.505  8251 
+ 8251 E AndroidRuntime: 	
+at androidx.compose.ui.no
+de.LayoutNodeLayoutDelega
+te$MeasurePassDelegate.re
+measure-BRTryo0(LayoutNod
+eLayoutDelegate.kt:620)
+04-02 17:34:48.505  8251 
+ 8251 E AndroidRuntime: 	
+at androidx.compose.ui.no
+de.LayoutNode.remeasure-_
+Sx5XlM$ui_release(LayoutN
+ode.kt:1145)
+04-02 17:34:48.505  8251 
+ 8251 E AndroidRuntime: 	
+at androidx.compose.ui.no
+de.MeasureAndLayoutDelega
+te.doRemeasure-sdFAvZA(Me
+asureAndLayoutDelegate.kt
+:354)
+04-02 17:34:48.505  8251 
+ 8251 E AndroidRuntime: 	
+at androidx.compose.ui.no
+de.MeasureAndLayoutDelega
+te.remeasureOnly(MeasureA
+ndLayoutDelegate.kt:562)
+04-02 17:34:48.505  8251 
+ 8251 E AndroidRuntime: 	
+at androidx.compose.ui.no
+de.MeasureAndLayoutDelega
+te.measureOnly(MeasureAnd
+LayoutDelegate.kt:407)
+04-02 17:34:48.505  8251 
+ 8251 E AndroidRuntime: 	
+at androidx.compose.ui.pl
+atform.AndroidComposeView
+.onMeasure(AndroidCompose
+View.android.kt:1058)
+04-02 17:34:48.505  8251 
+ 8251 E AndroidRuntime: 	
+at android.view.View.meas
+ure(View.java:28595)
+04-02 17:34:48.505  8251 
+ 8251 E AndroidRuntime: 	
+at androidx.compose.ui.pl
+atform.AbstractComposeVie
+w.internalOnMeasure$ui_re
+lease(ComposeView.android
+.kt:302)
+04-02 17:34:48.505  8251 
+ 8251 E AndroidRuntime: 	
+at androidx.compose.ui.pl
+atform.AbstractComposeVie
+w.onMeasure(ComposeView.a
+ndroid.kt:289)
+04-02 17:34:48.505  8251 
+ 8251 E AndroidRuntime: 	
+at android.view.View.meas
+ure(View.java:28595)
+04-02 17:34:48.505  8251 
+ 8251 E AndroidRuntime: 	
+at android.view.ViewGroup
+.measureChildWithMargins(
+ViewGroup.java:7031)
+04-02 17:34:48.505  8251 
+ 8251 E AndroidRuntime: 	
+at android.widget.FrameLa
+yout.onMeasure(FrameLayou
+t.java:194)
+04-02 17:34:48.505  8251 
+ 8251 E AndroidRuntime: 	
+at android.view.View.meas
+ure(View.java:28595)
+04-02 17:34:48.505  8251 
+ 8251 E AndroidRuntime: 	
+at android.view.ViewGroup
+.measureChildWithMargins(
+ViewGroup.java:7031)
+04-02 17:34:48.505  8251 
+ 8251 E AndroidRuntime: 	
+at android.widget.LinearL
+ayout.measureChildBeforeL
+ayout(LinearLayout.java:1
+608)
+04-02 17:34:48.505  8251 
+ 8251 E AndroidRuntime: 	
+at android.widget.LinearL
+ayout.measureVertical(Lin
+earLayout.java:878)
+04-02 17:34:48.505  8251 
+ 8251 E AndroidRuntime: 	
+at android.widget.LinearL
+ayout.onMeasure(LinearLay
+out.java:721)
+04-02 17:34:48.505  8251 
+ 8251 E AndroidRuntime: 	
+at android.view.View.meas
+ure(View.java:28595)
+04-02 17:34:48.505  8251 
+ 8251 E AndroidRuntime: 	
+at android.view.ViewGroup
+.measureChildWithMargins(
+ViewGroup.java:7031)
+04-02 17:34:48.505  8251 
+ 8251 E AndroidRuntime: 	
+at android.widget.FrameLa
+yout.onMeasure(FrameLayou
+t.java:194)
+04-02 17:34:48.505  8251 
+ 8251 E AndroidRuntime: 	
+at com.android.internal.p
+olicy.DecorView.onMeasure
+(DecorView.java:758)
+04-02 17:34:48.505  8251 
+ 8251 E AndroidRuntime: 	
+at android.view.View.meas
+ure(View.java:28595)
+04-02 17:34:48.505  8251 
+ 8251 E AndroidRuntime: 	
+at android.view.ViewRootI
+mpl.performMeasure(ViewRo
+otImpl.java:5088)
+04-02 17:34:48.505  8251 
+ 8251 E AndroidRuntime: 	
+at android.view.ViewRootI
+mpl.measureHierarchy(View
+RootImpl.java:3436)
+04-02 17:34:48.505  8251 
+ 8251 E AndroidRuntime: 	
+at android.view.ViewRootI
+mpl.performTraversals(Vie
+wRootImpl.java:3749)
+04-02 17:34:48.509  8251 
+ 8251 E AndroidRuntime: 	
+at android.view.ViewRootI
+mpl.doTraversal(ViewRootI
+mpl.java:3127)
+04-02 17:34:48.509  8251 
+ 8251 E AndroidRuntime: 	
+at android.view.ViewRootI
+mpl$TraversalRunnable.run
+(ViewRootImpl.java:10807)
+04-02 17:34:48.509  8251 
+ 8251 E AndroidRuntime: 	
+at android.view.Choreogra
+pher$CallbackRecord.run(C
+horeographer.java:1630)
+04-02 17:34:48.509  8251 
+ 8251 E AndroidRuntime: 	
+at android.view.Choreogra
+pher$CallbackRecord.run(C
+horeographer.java:1639)
+04-02 17:34:48.509  8251 
+ 8251 E AndroidRuntime: 	
+at android.view.Choreogra
+pher.doCallbacks(Choreogr
+apher.java:1235)
+04-02 17:34:48.509  8251 
+ 8251 E AndroidRuntime: 	
+at android.view.Choreogra
+pher.doFrame(Choreographe
+r.java:1164)
+04-02 17:34:48.509  8251 
+ 8251 E AndroidRuntime: 	
+at android.view.Choreogra
+pher$FrameDisplayEventRec
+eiver.run(Choreographer.j
+ava:1613)
+04-02 17:34:48.509  8251 
+ 8251 E AndroidRuntime: 	
+at android.os.Handler.han
+dleCallback(Handler.java:
+1070)
+04-02 17:34:48.509  8251 
+ 8251 E AndroidRuntime: 	
+at android.os.Handler.dis
+patchMessage(Handler.java
+:125)
+04-02 17:34:48.509  8251 
+ 8251 E AndroidRuntime: 	
+at android.os.Looper.disp
+atchMessage(Looper.java:3
+33)
+04-02 17:34:48.509  8251 
+ 8251 E AndroidRuntime: 	
+at android.os.Looper.loop
+Once(Looper.java:263)
+04-02 17:34:48.509  8251 
+ 8251 E AndroidRuntime: 	
+at android.os.Looper.loop
+(Looper.java:367)
+04-02 17:34:48.509  8251 
+ 8251 E AndroidRuntime: 	
+at android.app.ActivityTh
+read.main(ActivityThread.
+java:9287)
+04-02 17:34:48.509  8251 
+ 8251 E AndroidRuntime: 	
+at java.lang.reflect.Meth
+od.invoke(Native Method)
+04-02 17:34:48.509  8251 
+ 8251 E AndroidRuntime: 	
+at com.android.internal.o
+s.RuntimeInit$MethodAndAr
+gsCaller.run(RuntimeInit.
+java:566)
+04-02 17:34:48.509  8251 
+ 8251 E AndroidRuntime: 	
+at com.android.internal.o
+s.ZygoteInit.main(ZygoteI
+nit.java:929)
+04-02 17:34:48.509  8251 
+ 8251 E AndroidRuntime: 
+Caused by: java.lang.Ille
+galStateException: 
+Unable to load font Resou
+rceFont(resId=2131099651,
+ weight=FontWeight(weight
+=600), style=Normal, 
+loadingStrategy=Blocking)
+04-02 17:34:48.509  8251 
+ 8251 E AndroidRuntime: 	
+at androidx.compose.ui.te
+xt.font.FontListFontFamil
+yTypefaceAdapterKt.firstI
+mmediatelyAvailable(FontL
+istFontFamilyTypefaceAdap
+ter.kt:193)
+04-02 17:34:48.509  8251 
+ 8251 E AndroidRuntime: 	
+at androidx.compose.ui.te
+xt.font.FontListFontFamil
+yTypefaceAdapterKt.access
+$firstImmediatelyAvailabl
+e(FontListFontFamilyTypef
+aceAdapter.kt:1)
+04-02 17:34:48.509  8251 
+ 8251 E AndroidRuntime: 	
+at androidx.compose.ui.te
+xt.font.FontListFontFamil
+yTypefaceAdapter.resolve(
+FontListFontFamilyTypefac
+eAdapter.kt:133)
+04-02 17:34:48.509  8251 
+ 8251 E AndroidRuntime: 	
+at androidx.compose.ui.te
+xt.font.FontFamilyResolve
+rImpl$resolve$result$1.in
+voke(FontFamilyResolver.k
+t:93)
+04-02 17:34:48.509  8251 
+ 8251 E AndroidRuntime: 	
+at androidx.compose.ui.te
+xt.font.FontFamilyResolve
+rImpl$resolve$result$1.in
+voke(FontFamilyResolver.k
+t:92)
+04-02 17:34:48.509  8251 
+ 8251 E AndroidRuntime: 	
+at androidx.compose.ui.te
+xt.font.TypefaceRequestCa
+che.runCached(FontFamilyR
+esolver.kt:192)
+04-02 17:34:48.509  8251 
+ 8251 E AndroidRuntime: 	
+... 94 more
+04-02 17:34:48.509  8251 
+ 8251 E AndroidRuntime: 
+Caused by: android.conten
+t.res.Resources$NotFoundE
+xception: Font resource 
+ID #0x7f060003 could not 
+be retrieved.
+04-02 17:34:48.509  8251 
+ 8251 E AndroidRuntime: 	
+at androidx.core.content.
+res.ResourcesCompat.loadF
+ont(ResourcesCompat.java:
+570)
+04-02 17:34:48.509  8251 
+ 8251 E AndroidRuntime: 	
+at androidx.core.content.
+res.ResourcesCompat.getFo
+nt(ResourcesCompat.java:4
+11)
+04-02 17:34:48.509  8251 
+ 8251 E AndroidRuntime: 	
+at androidx.compose.ui.te
+xt.font.AndroidFontLoader
+_androidKt.load(AndroidFo
+ntLoader.android.kt:68)
+04-02 17:34:48.509  8251 
+ 8251 E AndroidRuntime: 	
+at androidx.compose.ui.te
+xt.font.AndroidFontLoader
+_androidKt.access$load(An
+droidFontLoader.android.k
+t:1)
+04-02 17:34:48.509  8251 
+ 8251 E AndroidRuntime: 	
+at androidx.compose.ui.te
+xt.font.AndroidFontLoader
+.loadBlocking(AndroidFont
+Loader.android.kt:43)
+04-02 17:34:48.509  8251 
+ 8251 E AndroidRuntime: 	
+at androidx.compose.ui.te
+xt.font.AndroidFontLoader
+.loadBlocking(AndroidFont
+Loader.android.kt:33)
+04-02 17:34:48.509  8251 
+ 8251 E AndroidRuntime: 	
+at androidx.compose.ui.te
+xt.font.FontListFontFamil
+yTypefaceAdapterKt.firstI
+mmediatelyAvailable(FontL
+istFontFamilyTypefaceAdap
+ter.kt:191)
+04-02 17:34:48.509  8251 
+ 8251 E AndroidRuntime: 	
+... 99 more
+
+

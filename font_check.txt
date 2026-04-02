@@ -1,0 +1,4 @@
+﻿inter_bold.ttf: 301901 bytes, magic: 0A 0A 0A 0A
+inter_medium.ttf: 301925 bytes, magic: 0A 0A 0A 0A
+inter_regular.ttf: 301937 bytes, magic: 0A 0A 0A 0A
+inter_semibold.ttf: 301944 bytes, magic: 0A 0A 0A 0A
