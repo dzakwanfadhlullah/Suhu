@@ -37,11 +37,21 @@ class ReminderWorker(
                 
                 // Terdeteksi! Jatuh tempo berada dalam rentang H-3
                 if (timeDifference in 0..threeDaysInMillis) {
-                    val daysLeft = timeDifference / (24L * 60L * 60L * 1000L)
+                    val daysLeft = (timeDifference / (24L * 60L * 60L * 1000L)).toInt()
                     Log.d("SuhuReminder", "🚨 AWAS! Langganan [${sub.name}] akan jatuh tempo dalam $daysLeft hari! (Nominal: Rp ${sub.price})")
                     foundUpcoming = true
                     
-                    // TODO: Di Fase 7.2 akan tembak notifikasi pop-up fisik ke layar HP di baris ini
+                    // Format harga untuk UI
+                    val formattedPrice = "Rp %,.0f".format(sub.price).replace(',', '.')
+                    
+                    // Memanggil Notification Helper untuk menembakkan Pop-up
+                    com.suhu.app.util.NotificationHelper.showUpcomingBillNotification(
+                        context = applicationContext,
+                        notificationId = sub.id.toInt(), // Cukup gunakan ID database langganan sebagai ID notif
+                        merchantName = sub.name,
+                        amountText = formattedPrice,
+                        daysLeft = daysLeft
+                    )
                 }
             }
 
