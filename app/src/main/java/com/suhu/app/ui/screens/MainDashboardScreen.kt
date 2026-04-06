@@ -41,6 +41,9 @@ import com.suhu.app.ui.components.SuhuTopAppBar
 import com.suhu.app.ui.theme.InterFontFamily
 import com.suhu.app.ui.theme.SuhuTheme
 
+import com.suhu.app.ui.components.SuhuStatusBanner
+import com.suhu.app.LocalNotificationAccess
+
 // ==========================================
 // DATA CLASS SEMENTARA (Dummy)
 // Akan diganti dengan SubscriptionEntity dari Room Database di Fase 5
@@ -77,6 +80,9 @@ fun MainDashboardScreen(
 ) {
     val colors = SuhuTheme.colors
     val spacing = SuhuTheme.spacing
+    
+    // Mengecek state permission dari root
+    val isNotificationAccessGranted = LocalNotificationAccess.current
 
     // Dummy data — akan diganti dengan data dari ViewModel/Room di Fase 5
     val upcomingSubscriptions = remember {
@@ -95,6 +101,17 @@ fun MainDashboardScreen(
         )
     }
 
+    // EDGE CASE: Smart Routing untuk Layar Kosong
+    if (allSubscriptions.isEmpty() && upcomingSubscriptions.isEmpty()) {
+        DashboardEmptyScreen(
+            onAddManualClick = onAddManualClick,
+            onAddClick = onAddClick,
+            onProfileClick = onProfileClick,
+            onNavigate = onNavigate
+        )
+        return
+    }
+
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -108,6 +125,17 @@ fun MainDashboardScreen(
             // Ruang untuk TopAppBar (fixed) dan BottomNavBar (fixed)
             contentPadding = PaddingValues(top = 100.dp, bottom = 120.dp)
         ) {
+            // EDGE CASE: Tampilkan Banner jika izin akses terputus
+            if (!isNotificationAccessGranted) {
+                item {
+                    SuhuStatusBanner(
+                        modifier = Modifier
+                            .padding(horizontal = spacing.large)
+                            .padding(bottom = spacing.medium)
+                    )
+                }
+            }
+
             // ==========================================
             // 1. LARGE TITLE: "Bulan Ini" (34px bold ~ headlineLarge)
             // ==========================================

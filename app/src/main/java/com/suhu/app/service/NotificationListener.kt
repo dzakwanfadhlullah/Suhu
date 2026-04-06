@@ -7,6 +7,11 @@ import android.util.Log
 
 class NotificationListener : NotificationListenerService() {
 
+    companion object {
+        private val recentTransactions = mutableMapOf<String, Long>()
+        private const val DEBOUNCE_WINDOW_MS = 10_000L
+    }
+
     override fun onListenerConnected() {
         super.onListenerConnected()
         Log.d("SuhuNotification", "Suhu Notification Listener Connected & Ready!")
@@ -32,9 +37,16 @@ class NotificationListener : NotificationListenerService() {
             // Menggabungkan teks untuk diparsing
             val fullBody = if (bigText.isNotBlank()) "$title $bigText" else "$title $text"
 
-            // Ekstraksi Nominal dan nama Merchant via Regex Parser
-            val parsedAmount = RegexParser.parseAmount(fullBody)
-            val parsedMerchant = RegexParser.parseMerchant(fullBody)
+            // Ekstraksi Nominal dan nama Merchant via Regex Parser dengan perlindungan ekstrem fallback
+            val parsedAmount: Double?
+            val parsedMerchant: String?
+            try {
+                parsedAmount = RegexParser.parseAmount(fullBody)
+                parsedMerchant = RegexParser.parseMerchant(fullBody)
+            } catch (e: Exception) {
+                Log.w("SuhuNotification", ">> FAIL-SAFE: Format ekstrem/tidak standar mengunci RegexParser. Diabaikan.", e)
+                return
+            }
 
             Log.d("SuhuNotification", "==============================")
             Log.d("SuhuNotification", "🏦 Source   : $packageName")
@@ -46,6 +58,17 @@ class NotificationListener : NotificationListenerService() {
             // Jika berhasil mengekstrak nominal dan merchant yang sah, selanjutnya data ini
             // akan disimpan ke database sebagai langganan (langkah Fase 6.3 / Integrasi Database).
             if (parsedAmount != null && parsedMerchant != null) {
+                // EDGE CASE: Deduplikasi Transaksi (Notifikasi Ganda dalam 10 detik)
+                val txKey = "${parsedMerchant}_${parsedAmount}"
+                val now = System.currentTimeMillis()
+                val lastSeen = recentTransactions[txKey] ?: 0L
+
+                if (now - lastSeen < DEBOUNCE_WINDOW_MS) {
+                    Log.d("SuhuNotification", ">> BLOCKED: Notifikasi ganda terdeteksi (Debounce 10s). Mengabaikan duplikat. <<")
+                    return
+                }
+                recentTransactions[txKey] = now
+
                 Log.d("SuhuNotification", ">> ACTION: Menganalisis Recurrence transaksi... <<")
                 
                 // Mendapatkan Repositori dari AppContainer
@@ -60,7 +83,6 @@ class NotificationListener : NotificationListenerService() {
                 )
             } else {
                 // FALLBACK: Notifikasi promo, transfer biasa, atau format tidak dikenali.
-                // Log and ignore peacefully without throwing exceptions.
                 Log.d("SuhuNotification", ">> FALLBACK: Format tidak dikenali atau bukan transaksi. Diabaikan. <<")
             }
         } catch (e: Exception) {
