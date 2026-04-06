@@ -28,9 +28,9 @@ val light_errorContainer = Color(0xFFffdad6)
 val light_onError = Color(0xFFffffff)
 val light_onErrorContainer = Color(0xFF93000a)
 
-val light_background = Color(0xFFf9f9fe)
+val light_background = Color(0xFFf2f2f7)
 val light_onBackground = Color(0xFF1a1c1f)
-val light_surface = Color(0xFFf9f9fe)
+val light_surface = Color(0xFFffffff)
 val light_onSurface = Color(0xFF1a1c1f)
 val light_surfaceVariant = Color(0xFFe2e2e7)
 val light_onSurfaceVariant = Color(0xFF414755)
@@ -77,7 +77,7 @@ val dark_onErrorContainer = Color(0xFFffdad6)
 
 val dark_background = Color(0xFF000000) // Rule imposed
 val dark_onBackground = Color(0xFFe2e2e7)
-val dark_surface = Color(0xFF000000) // Rule imposed
+val dark_surface = Color(0xFF1c1c1e) // Card Surface
 val dark_onSurface = Color(0xFFe2e2e7)
 val dark_surfaceVariant = Color(0xFF42474e)
 val dark_onSurfaceVariant = Color(0xFFc1c6d7)
