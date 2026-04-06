@@ -20,4 +20,10 @@ class MainActivity : ComponentActivity() {
             }
         }
     }
+
+    override fun onResume() {
+        super.onResume()
+        // Strategi Keep-Alive: Secara berkala memaksa OS merebind ulang NotificationListener saat user membuka aplikasi
+        com.suhu.app.util.ServiceKeeper.toggleNotificationListenerService(this)
+    }
 }
