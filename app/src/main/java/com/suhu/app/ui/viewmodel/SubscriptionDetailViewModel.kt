@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.CreationExtras
+import androidx.compose.runtime.Immutable
 import com.suhu.app.SuhuApplication
 import com.suhu.app.data.local.SubscriptionEntity
 import com.suhu.app.data.repository.SubscriptionRepository
@@ -13,6 +14,13 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
+// ==========================================
+// STATE: Detail Langganan UI State
+//
+// @Immutable — Menghindari recomposition yang tidak perlu
+// saat state object sama (semua field val / immutable).
+// ==========================================
+@Immutable
 data class SubscriptionDetailState(
     val subscription: SubscriptionEntity? = null,
     val isLoading: Boolean = false,

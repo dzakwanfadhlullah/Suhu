@@ -22,6 +22,7 @@ import androidx.compose.foundation.text.BasicText
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -93,12 +94,18 @@ fun ManualEntryFormScreen(
     var selectedDate by remember { mutableStateOf("12 Oktober 2023") }
 
     // ==========================================
-    // VALIDASI INPUT
+    // VALIDASI INPUT — Menggunakan derivedStateOf agar hanya
+    // memicu recomposition saat hasil boolean berubah,
+    // bukan setiap kali karakter diketik.
     // ==========================================
-    val isNameValid = serviceName.isNotBlank()
-    val isPriceValid = priceAmount.isNotBlank() && priceAmount.toDoubleOrNull() != null && (priceAmount.toDoubleOrNull() ?: 0.0) > 0
-    val isCategorySelected = selectedCategory != "Pilih Kategori"
-    val isFormValid = isNameValid && isPriceValid && isCategorySelected
+    val isFormValid by remember {
+        derivedStateOf {
+            val isNameValid = serviceName.isNotBlank()
+            val isPriceValid = priceAmount.isNotBlank() && priceAmount.toDoubleOrNull() != null && (priceAmount.toDoubleOrNull() ?: 0.0) > 0
+            val isCategorySelected = selectedCategory != "Pilih Kategori"
+            isNameValid && isPriceValid && isCategorySelected
+        }
+    }
 
     Box(
         modifier = Modifier
@@ -166,10 +173,7 @@ fun ManualEntryFormScreen(
                 )
             }
 
-            // Error hint saat nama kosong dan sudah pernah interaksi
-            if (serviceName.isNotEmpty() || !isNameValid) {
-                // Tidak tampilkan error jika belum diisi sama sekali
-            }
+            // Validasi error hint dihitung via derivedStateOf di isFormValid
 
             Spacer(modifier = Modifier.height(40.dp))
 

@@ -31,6 +31,8 @@ import com.suhu.app.ui.components.SuhuPrimaryButton
 import com.suhu.app.ui.components.SuhuTopAppBar
 import com.suhu.app.ui.theme.InterFontFamily
 import com.suhu.app.ui.theme.SuhuTheme
+import com.suhu.app.ui.theme.breathingAnimation
+import com.suhu.app.ui.theme.shimmerEffect
 
 /**
  * LAYAR DASHBOARD KOSONG — State awal saat belum ada data langganan.
@@ -223,7 +225,7 @@ private fun GhostBentoCard(
                     .width(labelBarWidth)
                     .height(8.dp)
                     .clip(RoundedCornerShape(999.dp))
-                    .background(colors.surfaceContainerHighest)
+                    .shimmerEffect()
             )
             // Value bar (lebih lebar, lebih tinggi)
             Box(
@@ -231,7 +233,7 @@ private fun GhostBentoCard(
                     .width(valueBarWidth)
                     .height(24.dp)
                     .clip(RoundedCornerShape(999.dp))
-                    .background(colors.surfaceContainerLow)
+                    .shimmerEffect()
             )
         }
     }
@@ -263,11 +265,11 @@ private fun EmptyStateSection() {
                     .background(colors.primary.copy(alpha = 0.05f))
             )
 
-            // Placeholder maskot Si Kancil
-            // Akan diganti dengan gambar asli saat resource tersedia
+            // Placeholder maskot Si Kancil dengan Breathing Effect
             BasicText(
                 text = "🦌",
-                style = TextStyle(fontSize = 120.sp)
+                style = TextStyle(fontSize = 120.sp),
+                modifier = Modifier.breathingAnimation()
             )
         }
 
@@ -385,7 +387,7 @@ private fun GhostTransactionRow(
             modifier = Modifier
                 .size(48.dp)
                 .clip(RoundedCornerShape(12.dp))
-                .background(colors.surfaceContainerLow)
+                .shimmerEffect()
         )
 
         Spacer(modifier = Modifier.width(spacing.medium))
@@ -401,7 +403,7 @@ private fun GhostTransactionRow(
                     .fillMaxWidth(nameLabelWidth)
                     .height(12.dp)
                     .clip(RoundedCornerShape(999.dp))
-                    .background(colors.surfaceContainerHigh)
+                    .shimmerEffect()
             )
             // Tanggal skeleton
             Box(
@@ -409,7 +411,7 @@ private fun GhostTransactionRow(
                     .fillMaxWidth(dateLabelWidth)
                     .height(8.dp)
                     .clip(RoundedCornerShape(999.dp))
-                    .background(colors.surfaceContainerHighest)
+                    .shimmerEffect()
             )
         }
 
@@ -421,7 +423,7 @@ private fun GhostTransactionRow(
                 .width(priceWidth)
                 .height(16.dp)
                 .clip(RoundedCornerShape(999.dp))
-                .background(colors.surfaceContainerLow)
+                .shimmerEffect()
         )
     }
 }

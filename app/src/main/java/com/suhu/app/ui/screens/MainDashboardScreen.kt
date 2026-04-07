@@ -40,6 +40,9 @@ import com.suhu.app.ui.components.SuhuNavRoute
 import com.suhu.app.ui.components.SuhuTopAppBar
 import com.suhu.app.ui.theme.InterFontFamily
 import com.suhu.app.ui.theme.SuhuTheme
+import com.suhu.app.ui.theme.breathingAnimation
+
+import androidx.compose.runtime.Stable
 
 import com.suhu.app.ui.components.SuhuStatusBanner
 import com.suhu.app.LocalNotificationAccess
@@ -47,7 +50,11 @@ import com.suhu.app.LocalNotificationAccess
 // ==========================================
 // DATA CLASS SEMENTARA (Dummy)
 // Akan diganti dengan SubscriptionEntity dari Room Database di Fase 5
+//
+// @Stable — Compose compiler menganggap semua properti stabil,
+// menghindari recomposition yang tidak perlu pada LazyRow/LazyColumn items.
 // ==========================================
+@Stable
 private data class SubscriptionSample(
     val name: String,
     val price: String,
@@ -127,7 +134,7 @@ fun MainDashboardScreen(
         ) {
             // EDGE CASE: Tampilkan Banner jika izin akses terputus
             if (!isNotificationAccessGranted) {
-                item {
+                item(key = "status_banner") {
                     SuhuStatusBanner(
                         modifier = Modifier
                             .padding(horizontal = spacing.large)
@@ -139,7 +146,7 @@ fun MainDashboardScreen(
             // ==========================================
             // 1. LARGE TITLE: "Bulan Ini" (34px bold ~ headlineLarge)
             // ==========================================
-            item {
+            item(key = "title_bulan_ini") {
                 BasicText(
                     text = "Bulan Ini",
                     style = SuhuTheme.typography.headlineLarge.copy(
@@ -155,7 +162,7 @@ fun MainDashboardScreen(
             // ==========================================
             // 2. HERO CARD: Total pengeluaran + Tagihan jatuh tempo + Badge + Maskot
             // ==========================================
-            item {
+            item(key = "hero_card") {
                 HeroCard()
                 Spacer(modifier = Modifier.height(40.dp))
             }
@@ -163,7 +170,7 @@ fun MainDashboardScreen(
             // ==========================================
             // 3. SECTION "Mendatang": Header + Carousel horizontal
             // ==========================================
-            item {
+            item(key = "section_mendatang") {
                 // Section Header
                 Row(
                     modifier = Modifier
@@ -193,12 +200,15 @@ fun MainDashboardScreen(
 
                 Spacer(modifier = Modifier.height(spacing.medium))
 
-                // Carousel horizontal dengan LazyRow
+                // Carousel horizontal dengan LazyRow — key stabil per item
                 LazyRow(
                     contentPadding = PaddingValues(horizontal = spacing.large),
                     horizontalArrangement = Arrangement.spacedBy(spacing.medium)
                 ) {
-                    items(upcomingSubscriptions) { sub ->
+                    items(
+                        items = upcomingSubscriptions,
+                        key = { it.name } // Key stabil untuk identitas unik tiap kartu
+                    ) { sub ->
                         SubscriptionCard(
                             serviceName = sub.name,
                             priceLabel = sub.price,
@@ -216,7 +226,7 @@ fun MainDashboardScreen(
             // ==========================================
             // 4. SECTION "Daftar Langganan": Header
             // ==========================================
-            item {
+            item(key = "header_daftar_langganan") {
                 BasicText(
                     text = "Daftar Langganan",
                     style = TextStyle(
@@ -237,7 +247,7 @@ fun MainDashboardScreen(
             // 5. DAFTAR LANGGANAN: List bergaya iOS + swipe gesture
             // Container squircle yang membungkus semua item
             // ==========================================
-            item {
+            item(key = "list_daftar_langganan") {
                 Column(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -268,7 +278,7 @@ fun MainDashboardScreen(
             // ==========================================
             // 6. HINT TEXT: Instruksi swipe gesture
             // ==========================================
-            item {
+            item(key = "hint_swipe") {
                 Spacer(modifier = Modifier.height(spacing.extraLarge))
                 BasicText(
                     text = "Geser ke kiri pada item untuk menghapus atau menghentikan pelacakan tagihan.",
@@ -341,9 +351,11 @@ private fun HeroCard() {
             contentAlignment = Alignment.Center
         ) {
             // Placeholder maskot — akan diganti dengan gambar asli
+            // Efek Breathing ditambahkan agar terlihat hidup (ngintip)
             BasicText(
                 text = "🦌",
-                style = TextStyle(fontSize = 48.sp)
+                style = TextStyle(fontSize = 48.sp),
+                modifier = Modifier.breathingAnimation()
             )
         }
 

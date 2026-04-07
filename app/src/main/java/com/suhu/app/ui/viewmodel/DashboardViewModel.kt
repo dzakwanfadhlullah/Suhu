@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.CreationExtras
+import androidx.compose.runtime.Immutable
 import com.suhu.app.SuhuApplication
 import com.suhu.app.data.local.SubscriptionEntity
 import com.suhu.app.data.repository.SubscriptionRepository
@@ -12,6 +13,14 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 
+// ==========================================
+// STATE: Dashboard UI State
+//
+// @Immutable — Memberi tahu Compose compiler bahwa class ini
+// tidak akan bermutasi setelah dibuat (semua field adalah val).
+// Menghindari recomposition yang tidak perlu saat state sama.
+// ==========================================
+@Immutable
 data class DashboardState(
     val subscriptions: List<SubscriptionEntity> = emptyList(),
     val totalExpense: Double = 0.0,

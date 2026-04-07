@@ -20,6 +20,13 @@ import com.suhu.app.ui.screens.ManualEntryFormScreen
 import com.suhu.app.ui.screens.OnboardingScreen
 import com.suhu.app.ui.theme.springSmooth
 
+private val SuhuScreen.ordinalLevel: Int
+    get() = when (this) {
+        is SuhuScreen.Onboarding -> 0
+        is SuhuScreen.Dashboard -> 1
+        is SuhuScreen.ManualEntry -> 2
+    }
+
 /**
  * Pengendali Navigasi Utama Aplikasi Suhu.
  * Menggunakan state-based navigation tanpa Material Navigation Component, 
@@ -33,18 +40,22 @@ fun SuhuNavHost() {
         AnimatedContent(
             targetState = currentScreen,
             transitionSpec = {
+                // Menghitung Hierarki untuk mendeteksi Push (Maju) vs Pop (Mundur)
+                val isPush = targetState.ordinalLevel >= initialState.ordinalLevel
+                
+                val enterOffset = if (isPush) { fullWidth: Int -> fullWidth } else { fullWidth: Int -> -fullWidth }
+                val exitOffset = if (isPush) { fullWidth: Int -> -fullWidth } else { fullWidth: Int -> fullWidth }
+
                 // Konfigurasi animasi transisi sesuai Apple Vibe (Spring Smooth)
-                // Slide in dari kanan dan fade in
-                // Slide out ke kiri dan fade out
                 (slideInHorizontally(
                     animationSpec = springSmooth(),
-                    initialOffsetX = { fullWidth -> fullWidth }
+                    initialOffsetX = enterOffset
                 ) + fadeIn(
                     animationSpec = tween(300)
                 )).togetherWith(
                     slideOutHorizontally(
                         animationSpec = springSmooth(),
-                        targetOffsetX = { fullWidth -> -fullWidth }
+                        targetOffsetX = exitOffset
                     ) + fadeOut(
                         animationSpec = tween(300)
                     )
